@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real Estate Sector</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+body { background:#f0f2f5; }
+header { background:#0b3d91; color:#fff; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; }
+header h1 { font-size:1.8rem; }
+header button { background:#ffd700; color:#000; border:none; padding:0.5rem 1rem; border-radius:5px; cursor:pointer; font-weight:bold; }
+header button:hover { background:#fff; color:#0b3d91; }
+
+.container { padding:2rem; }
+h2 { text-align:center; margin-bottom:2rem; color:#0b3d91; }
+
+.grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; }
+.card { background:#fff; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); overflow:hidden; transition:transform 0.3s, box-shadow 0.3s; cursor:pointer; }
+.card:hover { transform: scale(1.05); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+.card img { width:100%; height:180px; object-fit:cover; }
+.card h3 { text-align:center; margin:1rem 0 0.5rem 0; color:#0b3d91; }
+.card p { text-align:center; padding:0 1rem 1rem 1rem; color:#555; }
+.card button { display:block; margin:0 auto 1rem auto; padding:0.5rem 1rem; background:#0b3d91; color:#fff; border:none; border-radius:5px; cursor:pointer; font-weight:bold; transition:0.3s; }
+.card button:hover { background:#ffd700; color:#000; }
+
+@media(max-width:1024px){ .grid { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:600px){ .grid { grid-template-columns:1fr; } }
+
+footer { background:#0b3d91; color:#fff; text-align:center; padding:2rem; margin-top:2rem; }
+footer a { color:#ffd700; text-decoration:none; font-weight:bold; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Real Estate Sector</h1>
+  <button onclick="window.location.href='index.html'">Back to Dashboard</button>
+</header>
+
+<div class="container">
+  <h2>Available Properties</h2>
+  <div class="grid" id="propertyGrid"></div>
+</div>
+
+<footer>
+  © 2025 Real Estate Sector | <a href="#">Contact Us</a>
+</footer>
+
+<script>
+// Real estate properties array with local images
+const properties = [
+  { name: "Luxury Villa", image: "images/villa.jpeg", description: "Spacious villa with swimming pool and garden." },
+  { name: "Modern Apartment", image: "images/apartment.jpeg", description: "Comfortable apartment in city center." },
+  { name: "Beach House", image: "images/beachhouse.jpeg", description: "Beautiful house by the sea." },
+  { name: "Office Space", image: "images/office.jpeg", description: "Commercial office space with modern amenities." },
+  { name: "Townhouse", image: "images/townhouse.jpg", description: "Cozy townhouse in a gated community." },
+  { name: "Penthouse", image: "images/penthouse.jpeg", description: "Luxurious penthouse with panoramic views." }
+];
+
+const propertyGrid = document.getElementById('propertyGrid');
+
+// Render property cards
+properties.forEach(property => {
+  const card = document.createElement('div');
+  card.classList.add('card');
+
+  const img = document.createElement('img');
+  img.src = property.image;
+  img.alt = property.name;
+
+  const title = document.createElement('h3');
+  title.textContent = property.name;
+
+  const desc = document.createElement('p');
+  desc.textContent = property.description;
+
+  const btn = document.createElement('button');
+  btn.textContent = "View Details";
+  btn.addEventListener('click', () => {
+    alert(`You selected ${property.name}!`);
+  });
+
+  card.appendChild(img);
+  card.appendChild(title);
+  card.appendChild(desc);
+  card.appendChild(btn);
+
+  propertyGrid.appendChild(card);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Sector</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+body { background:#f0f2f5; }
+header { background:#0b3d91; color:#fff; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; }
+header h1 { font-size:1.8rem; }
+header button { background:#ffd700; color:#000; border:none; padding:0.5rem 1rem; border-radius:5px; cursor:pointer; font-weight:bold; }
+header button:hover { background:#fff; color:#0b3d91; }
+
+.container { padding:2rem; }
+h2 { text-align:center; margin-bottom:2rem; color:#0b3d91; }
+
+.grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; }
+.card { background:#fff; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); overflow:hidden; transition:transform 0.3s, box-shadow 0.3s; cursor:pointer; }
+.card:hover { transform: scale(1.05); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+.card img { width:100%; height:180px; object-fit:cover; }
+.card h3 { text-align:center; margin:1rem 0 0.5rem 0; color:#0b3d91; }
+.card p { text-align:center; padding:0 1rem 1rem 1rem; color:#555; }
+.card button { display:block; margin:0 auto 1rem auto; padding:0.5rem 1rem; background:#0b3d91; color:#fff; border:none; border-radius:5px; cursor:pointer; font-weight:bold; transition:0.3s; }
+.card button:hover { background:#ffd700; color:#000; }
+
+@media(max-width:1024px){ .grid { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:600px){ .grid { grid-template-columns:1fr; } }
+
+footer { background:#0b3d91; color:#fff; text-align:center; padding:2rem; margin-top:2rem; }
+footer a { color:#ffd700; text-decoration:none; font-weight:bold; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Finance Sector</h1>
+  <button onclick="window.location.href='index.html'">Back to Dashboard</button>
+</header>
+
+<div class="container">
+  <h2>Financial Services</h2>
+  <div class="grid" id="financeGrid"></div>
+</div>
+
+<footer>
+  © 2025 Finance Sector | <a href="#">Contact Us</a>
+</footer>
+
+<script>
+// Finance services with local images
+const financeServices = [
+  { name: "Banking", image: "images/banking.jpeg", description: "Comprehensive banking solutions for individuals and businesses." },
+  { name: "Investment", image: "images/investment.jpeg", description: "Grow your wealth with smart investment plans." },
+  { name: "Insurance", image: "images/insurance.jpeg", description: "Protect your life and assets with insurance plans." },
+  { name: "Loans", image: "images/loans.jpeg", description: "Personal, home, and business loans at competitive rates." },
+  { name: "Financial Planning", image: "images/planing.jpeg", description: "Plan your finances with expert guidance." },
+  { name: "Stock Trading", image: "images/trading.jpeg", description: "Buy and sell stocks with ease and security." }
+];
+
+const financeGrid = document.getElementById('financeGrid');
+
+// Render finance cards
+financeServices.forEach(service => {
+  const card = document.createElement('div');
+  card.classList.add('card');
+
+  const img = document.createElement('img');
+  img.src = service.image;
+  img.alt = service.name;
+
+  const title = document.createElement('h3');
+  title.textContent = service.name;
+
+  const desc = document.createElement('p');
+  desc.textContent = service.description;
+
+  const btn = document.createElement('button');
+  btn.textContent = "Learn More";
+  btn.addEventListener('click', () => {
+    alert(`You selected ${service.name}!`);
+  });
+
+  card.appendChild(img);
+  card.appendChild(title);
+  card.appendChild(desc);
+  card.appendChild(btn);
+
+  financeGrid.appendChild(card);
+});
+</script>
+
+</body>
+</html>

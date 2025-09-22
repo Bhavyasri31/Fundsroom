@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entertainment Sector</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+body { background:#f0f2f5; }
+header { background:#0b3d91; color:#fff; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; }
+header h1 { font-size:1.8rem; }
+header button { background:#ffd700; color:#000; border:none; padding:0.5rem 1rem; border-radius:5px; cursor:pointer; font-weight:bold; }
+header button:hover { background:#fff; color:#0b3d91; }
+
+.container { padding:2rem; }
+h2 { text-align:center; margin-bottom:2rem; color:#0b3d91; }
+
+.grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; }
+.card { background:#fff; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); overflow:hidden; transition:transform 0.3s, box-shadow 0.3s; cursor:pointer; }
+.card:hover { transform: scale(1.05); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+.card img { width:100%; height:180px; object-fit:cover; }
+.card h3 { text-align:center; margin:1rem 0 0.5rem 0; color:#0b3d91; }
+.card p { text-align:center; padding:0 1rem 1rem 1rem; color:#555; }
+.card button { display:block; margin:0 auto 1rem auto; padding:0.5rem 1rem; background:#0b3d91; color:#fff; border:none; border-radius:5px; cursor:pointer; font-weight:bold; transition:0.3s; }
+.card button:hover { background:#ffd700; color:#000; }
+
+@media(max-width:1024px){ .grid { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:600px){ .grid { grid-template-columns:1fr; } }
+
+footer { background:#0b3d91; color:#fff; text-align:center; padding:2rem; margin-top:2rem; }
+footer a { color:#ffd700; text-decoration:none; font-weight:bold; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Entertainment Sector</h1>
+  <button onclick="window.location.href='index.html'">Back to Dashboard</button>
+</header>
+
+<div class="container">
+  <h2>Top Entertainment Options</h2>
+  <div class="grid" id="entertainmentGrid"></div>
+</div>
+
+<footer>
+  © 2025 Entertainment Sector | <a href="#">Contact Us</a>
+</footer>
+
+<script>
+// Entertainment items with local images
+const entertainmentItems = [
+  { name: "Movies", image: "images/movies.jpeg", description: "Latest blockbuster movies to enjoy." },
+  { name: "Concerts", image: "images/concerts.jpeg", description: "Live music concerts near you." },
+  { name: "Theater Shows", image: "images/theater.jpeg", description: "Exciting plays and theater performances." },
+  { name: "Amusement Parks", image: "images/park.jpeg", description: "Fun and adventure for the whole family." },
+  { name: "Gaming", image: "images/gaming.jpeg", description: "Latest video games and esports events." },
+  { name: "Festivals", image: "images/festival.jpeg", description: "Cultural and music festivals around the world." }
+];
+
+const entertainmentGrid = document.getElementById('entertainmentGrid');
+
+// Render entertainment cards
+entertainmentItems.forEach(item => {
+  const card = document.createElement('div');
+  card.classList.add('card');
+
+  const img = document.createElement('img');
+  img.src = item.image;
+  img.alt = item.name;
+
+  const title = document.createElement('h3');
+  title.textContent = item.name;
+
+  const desc = document.createElement('p');
+  desc.textContent = item.description;
+
+  const btn = document.createElement('button');
+  btn.textContent = "Book Now";
+  btn.addEventListener('click', () => {
+    alert(`You selected ${item.name}!`);
+  });
+
+  card.appendChild(img);
+  card.appendChild(title);
+  card.appendChild(desc);
+  card.appendChild(btn);
+
+  entertainmentGrid.appendChild(card);
+});
+</script>
+
+</body>
+</html>
